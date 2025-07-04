@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Número de Cuenta</title>
+</head>
+<body>
+  <h2>Número de Cuenta Bancaria</h2>
+  <p id="cuentaBancaria">215-968878730-32</p>
+  <button onclick="copiarNumero()">Copiar Número</button>
+
+  <script>
+    function copiarNumero() {
+      /* Seleccionar el texto dentro del párrafo */
+      const numeroCuenta = document.getElementById('cuentaBancaria');
+      const seleccion = window.getSelection();
+      const rango = document.createRange();
+      rango.selectNodeContents(numeroCuenta);
+      seleccion.removeAllRanges();
+      seleccion.addRange(rango);
+
+      /* Copiar el texto seleccionado */
+      document.execCommand('copy');
+      seleccion.removeAllRanges();
+
+      /* Mostrar mensaje de copiado */
+      alert('Número de cuenta copiado al portapapeles: ' + numeroCuenta.textContent);
+    }
+  </script>
+</body>
+</html>
