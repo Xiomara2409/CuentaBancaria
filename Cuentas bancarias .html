@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Copy Bank Accounts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f9f9f9;
+    }
+    .container {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      max-width: 400px;
+      margin: auto;
+    }
+    .account-block {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .account-label {
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 85%;
+      font-size: 1.1em;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      text-align: center;
+    }
+    button {
+      padding: 7px 18px;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:active {
+      background: #0056b3;
+    }
+    .copied-msg {
+      color: green;
+      margin-top: 8px;
+      font-size: 0.98em;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Cuentas Bancarias</h2>
+    <div class="account-block">
+      <div class="account-label">Cuenta bancaria BCP</div>
+      <input type="text" id="account1" value="215-968878730-32" readonly>
+      <button onclick="copyAccount('account1', 'msg1')">Copy</button>
+      <div class="copied-msg" id="msg1">Copied!</div>
+    </div>
+    <div class="account-block">
+      <div class="account-label">CCI BCP</div>
+      <input type="text" id="account2" value="002-215196887873032-21" readonly>
+      <button onclick="copyAccount('account2', 'msg2')">Copy</button>
+      <div class="copied-msg" id="msg2">Copied!</div>
+    </div>
+    <div class="account-block">
+      <div class="account-label">Cuenta Bancaria Interbank</div>
+      <input type="text" id="account3" value="898-34752623-62" readonly>
+      <button onclick="copyAccount('account3', 'msg3')">Copy</button>
+      <div class="copied-msg" id="msg3">Copied!</div>
+    </div>
+    <div class="account-block">
+      <div class="account-label">CCI Interbank</div>
+      <input type="text" id="account4" value="003-898-013475262362-46" readonly>
+      <button onclick="copyAccount('account4', 'msg4')">Copy</button>
+      <div class="copied-msg" id="msg4">Copied!</div>
+    </div>
+  </div>
+  <script>
+    function copyAccount(inputId, msgId) {
+      const input = document.getElementById(inputId);
+      input.select();
+      input.setSelectionRange(0, 99999); // for mobile
+      document.execCommand('copy');
+      const msg = document.getElementById(msgId);
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 1500);
+    }
+  </script>
+</body>
+</html>
